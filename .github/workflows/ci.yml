@@ -1,0 +1,48 @@
+---
+name: CI
+
+on:
+  push:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 5 * * *'
+jobs:
+  update-headers:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install dependencies
+        run: sudo apt update && sudo apt install build-essential -y
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Git config
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
+      - name: Download sources
+        uses: actions/checkout@v3
+        with:
+            repository: gcc-mirror/gcc
+            path: gcc
+
+      - name: Configure
+        run: |
+          cd gcc/libstdc++-v3/
+          mkdir build && cd build
+          ../configure --prefix=/ --disable-multilib --disable-tls --disable-nls --disable-hosted-libstdcxx --disable-libstdcxx-verbose --disable-libstdcxx-threads --disable-libstdcxx-filesystem-ts --disable-libstdcxx-backtrace
+
+      - name: Build
+        run: |
+          DESTDIR=$(pwd)/output/ make -C gcc/libstdc++-v3/build/ install-data
+          rm -rf include && mv output/include/c++/*/ include
+          rm -rf gcc output
+
+      - name: Push
+        run: |
+          git config user.name '3uclid3'
+          git config user.email '3uclid3@users.noreply.github.com'
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/3uclid3/libstdcxx-fh.git
+          git fetch --all
+          git add .
+          git commit -m "Update headers [ci skip]"
+          git push origin main
