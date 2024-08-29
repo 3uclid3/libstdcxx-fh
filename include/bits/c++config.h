@@ -36,7 +36,7 @@
 #define _GLIBCXX_RELEASE 15
 
 // The datestamp of the C++ library in compressed ISO date format.
-#define __GLIBCXX__ 20240828
+#define __GLIBCXX__ 20240829
 
 // Macros for various attributes.
 //   _GLIBCXX_PURE
@@ -1214,6 +1214,9 @@ namespace __gnu_cxx
 
 /* Define if openat is available in <fcntl.h>. */
 #define _GLIBCXX_HAVE_OPENAT 1
+
+/* Define if O_NONBLOCK is defined in <fcntl.h> */
+#define _GLIBCXX_HAVE_O_NONBLOCK 1
 
 /* Define if poll is available in <poll.h>. */
 #define _GLIBCXX_HAVE_POLL 1
