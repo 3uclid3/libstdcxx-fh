@@ -34,15 +34,17 @@
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wvariadic-macros"
+#if __cplusplus
 #pragma GCC diagnostic ignored "-Wc++11-extensions"
 #pragma GCC diagnostic ignored "-Wc++23-extensions" // bf16
+#endif
 
 // The major release number for the GCC release the C++ library belongs to.
 #define _GLIBCXX_RELEASE 15
 
 // The datestamp of the C++ library in compressed ISO date format.
 #undef __GLIBCXX__ /* The testsuite defines it to 99999999 to block PCH.  */
-#define __GLIBCXX__ 20240923
+#define __GLIBCXX__ 20240924
 
 // Macros for various attributes.
 //   _GLIBCXX_PURE
