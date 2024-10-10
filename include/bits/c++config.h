@@ -46,7 +46,7 @@
 
 // The datestamp of the C++ library in compressed ISO date format.
 #undef __GLIBCXX__ /* The testsuite defines it to 99999999 to block PCH.  */
-#define __GLIBCXX__ 20241009
+#define __GLIBCXX__ 20241010
 
 // Macros for various attributes.
 //   _GLIBCXX_PURE
@@ -586,9 +586,14 @@ namespace std
 #pragma GCC visibility pop
 }
 
+#ifndef _GLIBCXX_ASSERTIONS
+# if defined(_GLIBCXX_DEBUG)
 // Debug Mode implies checking assertions.
-#if defined(_GLIBCXX_DEBUG) && !defined(_GLIBCXX_ASSERTIONS)
-# define _GLIBCXX_ASSERTIONS 1
+#  define _GLIBCXX_ASSERTIONS 1
+# elif ! defined(__OPTIMIZE__) && ! defined(_GLIBCXX_NO_ASSERTIONS)
+// Enable assertions for unoptimized builds.
+#  define _GLIBCXX_ASSERTIONS 1
+# endif
 #endif
 
 // Disable std::string explicit instantiation declarations in order to assert.
