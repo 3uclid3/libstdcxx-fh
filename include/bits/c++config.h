@@ -940,7 +940,7 @@ namespace __gnu_cxx
 #define _GLIBCXX_HAVE_ALIGNED_ALLOC 1
 
 /* Define if arc4random is available in <stdlib.h>. */
-/* #undef _GLIBCXX_HAVE_ARC4RANDOM */
+#define _GLIBCXX_HAVE_ARC4RANDOM 1
 
 /* Define to 1 if you have the <arpa/inet.h> header file. */
 #define _GLIBCXX_HAVE_ARPA_INET_H 1
@@ -1578,7 +1578,7 @@ namespace __gnu_cxx
 
 /* Define if global objects can be aligned to
    std::hardware_destructive_interference_size. */
-/* #undef _GLIBCXX_CAN_ALIGNAS_DESTRUCTIVE_SIZE */
+#define _GLIBCXX_CAN_ALIGNAS_DESTRUCTIVE_SIZE 1
 
 /* Define to use concept checking code from the boost libraries. */
 /* #undef _GLIBCXX_CONCEPT_CHECKS */
@@ -1827,11 +1827,11 @@ namespace __gnu_cxx
 
 /* Define if c8rtomb and mbrtoc8 functions in <uchar.h> should be imported
    into namespace std in <cuchar> for C++20. */
-/* #undef _GLIBCXX_USE_UCHAR_C8RTOMB_MBRTOC8_CXX20 */
+#define _GLIBCXX_USE_UCHAR_C8RTOMB_MBRTOC8_CXX20 1
 
 /* Define if c8rtomb and mbrtoc8 functions in <uchar.h> should be imported
    into namespace std in <cuchar> for -fchar8_t. */
-/* #undef _GLIBCXX_USE_UCHAR_C8RTOMB_MBRTOC8_FCHAR8_T */
+#define _GLIBCXX_USE_UCHAR_C8RTOMB_MBRTOC8_FCHAR8_T 1
 
 /* Define if utime is available in <utime.h>. */
 #define _GLIBCXX_USE_UTIME 1
