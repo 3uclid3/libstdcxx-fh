@@ -46,7 +46,7 @@
 
 // The datestamp of the C++ library in compressed ISO date format.
 #undef __GLIBCXX__ /* The testsuite defines it to 99999999 to block PCH.  */
-#define __GLIBCXX__ 20241113
+#define __GLIBCXX__ 20241115
 
 // Macros for various attributes.
 //   _GLIBCXX_PURE
@@ -169,7 +169,7 @@
 #endif
 
 // Macro to warn about unused results.
-#if __cplusplus >= 201703L
+#if __cplusplus >= 201103L
 # define _GLIBCXX_NODISCARD [[__nodiscard__]]
 #else
 # define _GLIBCXX_NODISCARD
