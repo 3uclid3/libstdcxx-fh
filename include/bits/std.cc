@@ -806,6 +806,7 @@ export namespace std
     using chrono::parse;
     using chrono::from_stream;
     using chrono::clock_time_conversion;
+#if __cpp_lib_chrono >= 201907L
     using chrono::tzdb;
     using chrono::tzdb_list;
     using chrono::get_tzdb;
@@ -828,6 +829,7 @@ export namespace std
     using chrono::get_leap_second_info;
     using chrono::time_zone_link;
     using chrono::local_time_format;
+#endif
     using chrono::is_clock;
     using chrono::is_clock_v;
   }
@@ -3171,6 +3173,9 @@ export namespace std
   using std::make_pair;
   using std::piecewise_construct;
   using std::piecewise_construct_t;
+#if __cpp_lib_to_underlying
+  using std::to_underlying;
+#endif
   using std::tuple_element;
   using std::tuple_size;
 #pragma GCC diagnostic push
@@ -3297,7 +3302,9 @@ export C_LIB_NAMESPACE
 {
   using std::isalnum;
   using std::isalpha;
+#ifdef _GLIBCXX_USE_C99_CTYPE
   using std::isblank;
+#endif
   using std::iscntrl;
   using std::isdigit;
   using std::isgraph;
@@ -3317,6 +3324,7 @@ export C_LIB_NAMESPACE
 // 28.3 <cfenv>
 export C_LIB_NAMESPACE
 {
+#ifdef _GLIBCXX_USE_C99_FENV
   using std::feclearexcept;
   using std::fegetenv;
   using std::fegetexceptflag;
@@ -3330,6 +3338,7 @@ export C_LIB_NAMESPACE
   using std::fetestexcept;
   using std::feupdateenv;
   using std::fexcept_t;
+#endif
 }
 
 // 17.3.7 <cfloat> [cfloat.syn]
@@ -3338,13 +3347,17 @@ export C_LIB_NAMESPACE
 // 31.13.2 <cinttypes>
 export C_LIB_NAMESPACE
 {
+#ifdef _GLIBCXX_USE_C99_INTTYPES
   using std::imaxabs;
   using std::imaxdiv;
   using std::imaxdiv_t;
   using std::strtoimax;
   using std::strtoumax;
+#if defined(_GLIBCXX_USE_WCHAR_T) && _GLIBCXX_USE_C99_INTTYPES_WCHAR_T
   using std::wcstoimax;
   using std::wcstoumax;
+#endif
+#endif
 }
 
 // 17.3.6 <climits> [climits.syn]
@@ -3743,7 +3756,9 @@ export C_LIB_NAMESPACE
   using std::sprintf;
   using std::sscanf;
   using std::tmpfile;
+#if _GLIBCXX_USE_TMPNAM
   using std::tmpnam;
+#endif
   using std::ungetc;
   using std::vfprintf;
   using std::vfscanf;
@@ -3760,8 +3775,12 @@ export C_LIB_NAMESPACE
   using std::_Exit;
   using std::abort;
   using std::abs;
+#ifdef _GLIBCXX_HAVE_ALIGNED_ALLOC
   using std::aligned_alloc;
+#endif
+#ifdef _GLIBCXX_HAVE_AT_QUICK_EXIT
   using std::at_quick_exit;
+#endif
   using std::atexit;
   using std::atof;
   using std::atoi;
@@ -3781,11 +3800,15 @@ export C_LIB_NAMESPACE
   using std::lldiv;
   using std::lldiv_t;
   using std::malloc;
+#ifdef _GLIBCXX_HAVE_MBSTATE_T
   using std::mblen;
   using std::mbstowcs;
   using std::mbtowc;
+#endif
   using std::qsort;
+#ifdef _GLIBCXX_HAVE_QUICK_EXIT
   using std::quick_exit;
+#endif
   using std::rand;
   using std::realloc;
   using std::size_t;
@@ -3798,8 +3821,10 @@ export C_LIB_NAMESPACE
   using std::strtoul;
   using std::strtoull;
   using std::system;
+#ifdef _GLIBCXX_USE_WCHAR_T
   using std::wcstombs;
   using std::wctomb;
+#endif
 }
 
 // 23.5.3 <cstring>
@@ -3847,20 +3872,27 @@ export C_LIB_NAMESPACE
   using std::time_t;
   using std::timespec;
   using std::tm;
+#ifdef _GLIBCXX_HAVE_TIMESPEC_GET
   using std::timespec_get;
+#endif
 }
 
 // 23.5.5 <cuchar>
 export C_LIB_NAMESPACE
 {
+#if _GLIBCXX_USE_UCHAR_C8RTOMB_MBRTOC8_CXX20
   using std::mbrtoc8;
   using std::c8rtomb;
+#endif
+#if _GLIBCXX_USE_C11_UCHAR_CXX11
   using std::mbrtoc16;
   using std::c16rtomb;
   using std::mbrtoc32;
   using std::c32rtomb;
+#endif
 }
 
+#if _GLIBCXX_USE_WCHAR_T
 // 23.5.4 <cwchar>
 export C_LIB_NAMESPACE
 {
@@ -3887,11 +3919,19 @@ export C_LIB_NAMESPACE
   using std::tm;
   using std::ungetwc;
   using std::vfwprintf;
+# if _GLIBCXX_HAVE_VFWSCANF
   using std::vfwscanf;
+#endif
+#ifndef _GLIBCXX_HAVE_BROKEN_VSWPRINTF
   using std::vswprintf;
+#endif
+# if _GLIBCXX_HAVE_VSWSCANF
   using std::vswscanf;
+#endif
   using std::vwprintf;
+# if _GLIBCXX_HAVE_VWSCANF
   using std::vwscanf;
+#endif
   using std::wcrtomb;
   using std::wcscat;
   using std::wcschr;
@@ -3910,13 +3950,19 @@ export C_LIB_NAMESPACE
   using std::wcsspn;
   using std::wcsstr;
   using std::wcstod;
+#if _GLIBCXX_HAVE_WCSTOF
   using std::wcstof;
+#endif
   using std::wcstok;
   using std::wcstol;
+#if _GLIBCXX_USE_C99_WCHAR
   using std::wcstold;
   using std::wcstoll;
+#endif
   using std::wcstoul;
+#if _GLIBCXX_USE_C99_WCHAR
   using std::wcstoull;
+#endif
   using std::wcsxfrm;
   using std::wctob;
   using std::wint_t;
@@ -3928,13 +3974,17 @@ export C_LIB_NAMESPACE
   using std::wprintf;
   using std::wscanf;
 }
+#endif
 
+#if _GLIBCXX_USE_WCHAR_T
 // 23.5.2 <cwctype>
 export C_LIB_NAMESPACE
 {
   using std::iswalnum;
   using std::iswalpha;
+#if _GLIBCXX_HAVE_ISWBLANK
   using std::iswblank;
+#endif
   using std::iswcntrl;
   using std::iswctype;
   using std::iswdigit;
@@ -3954,3 +4004,4 @@ export C_LIB_NAMESPACE
   using std::wctype_t;
   using std::wint_t;
 }
+#endif
