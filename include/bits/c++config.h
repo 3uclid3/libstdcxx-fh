@@ -46,7 +46,7 @@
 
 // The datestamp of the C++ library in compressed ISO date format.
 #undef __GLIBCXX__ /* The testsuite defines it to 99999999 to block PCH.  */
-#define __GLIBCXX__ 20250225
+#define __GLIBCXX__ 20250226
 
 // Macros for various attributes.
 //   _GLIBCXX_PURE
@@ -219,6 +219,14 @@
 #  define _GLIBCXX23_CONSTEXPR constexpr
 # else
 #  define _GLIBCXX23_CONSTEXPR
+# endif
+#endif
+
+#ifndef _GLIBCXX26_CONSTEXPR
+# if __cplusplus >= 202400L
+#  define _GLIBCXX26_CONSTEXPR constexpr
+# else
+#  define _GLIBCXX26_CONSTEXPR
 # endif
 #endif
 
