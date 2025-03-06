@@ -581,7 +581,12 @@
 #undef __glibcxx_want_gcd_lcm
 
 #if !defined(__cpp_lib_raw_memory_algorithms)
-# if (__cplusplus >= 201703L)
+# if (__cplusplus >  202302L) && (__cpp_constexpr >= 202406L)
+#  define __glibcxx_raw_memory_algorithms 202411L
+#  if defined(__glibcxx_want_all) || defined(__glibcxx_want_raw_memory_algorithms)
+#   define __cpp_lib_raw_memory_algorithms 202411L
+#  endif
+# elif (__cplusplus >= 201703L)
 #  define __glibcxx_raw_memory_algorithms 201606L
 #  if defined(__glibcxx_want_all) || defined(__glibcxx_want_raw_memory_algorithms)
 #   define __cpp_lib_raw_memory_algorithms 201606L
@@ -2039,6 +2044,16 @@
 # endif
 #endif /* !defined(__cpp_lib_is_virtual_base_of) && defined(__glibcxx_want_is_virtual_base_of) */
 #undef __glibcxx_want_is_virtual_base_of
+
+#if !defined(__cpp_lib_ranges_cache_latest)
+# if (__cplusplus >  202302L)
+#  define __glibcxx_ranges_cache_latest 202411L
+#  if defined(__glibcxx_want_all) || defined(__glibcxx_want_ranges_cache_latest)
+#   define __cpp_lib_ranges_cache_latest 202411L
+#  endif
+# endif
+#endif /* !defined(__cpp_lib_ranges_cache_latest) && defined(__glibcxx_want_ranges_cache_latest) */
+#undef __glibcxx_want_ranges_cache_latest
 
 #if !defined(__cpp_lib_ranges_concat)
 # if (__cplusplus >  202302L) && (__cpp_pack_indexing)
