@@ -46,7 +46,7 @@
 
 // The datestamp of the C++ library in compressed ISO date format.
 #undef __GLIBCXX__ /* The testsuite defines it to 99999999 to block PCH.  */
-#define __GLIBCXX__ 20250306
+#define __GLIBCXX__ 20250307
 
 // Macros for various attributes.
 //   _GLIBCXX_PURE
@@ -261,7 +261,7 @@
 # if __cpp_exceptions
 #  define _GLIBCXX_THROW_OR_ABORT(_EXC) (throw (_EXC))
 # else
-#  define _GLIBCXX_THROW_OR_ABORT(_EXC) (__builtin_abort())
+#  define _GLIBCXX_THROW_OR_ABORT(_EXC) (__builtin_abort(), (void)(_EXC))
 # endif
 #endif
 
