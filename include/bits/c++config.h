@@ -46,7 +46,7 @@
 
 // The datestamp of the C++ library in compressed ISO date format.
 #undef __GLIBCXX__ /* The testsuite defines it to 99999999 to block PCH.  */
-#define __GLIBCXX__ 20250331
+#define __GLIBCXX__ 20250401
 
 // Macros for various attributes.
 //   _GLIBCXX_PURE
@@ -1030,10 +1030,6 @@ namespace __gnu_cxx
    don't. */
 #define _GLIBCXX_HAVE_DECL_STRNLEN 1
 
-/* Define to 1 if you have the declaration of `tzname', and to 0 if you don't.
-   */
-/* #undef _GLIBCXX_HAVE_DECL_TZNAME */
-
 /* Define to 1 if you have the <dirent.h> header file. */
 #define _GLIBCXX_HAVE_DIRENT_H 1
 
@@ -1368,9 +1364,6 @@ namespace __gnu_cxx
 /* Define to 1 if `d_type' is a member of `struct dirent'. */
 #define _GLIBCXX_HAVE_STRUCT_DIRENT_D_TYPE 1
 
-/* Define to 1 if `tm_zone' is a member of `struct tm'. */
-#define _GLIBCXX_HAVE_STRUCT_TM_TM_ZONE 1
-
 /* Define if strxfrm_l is available in <string.h>. */
 #define _GLIBCXX_HAVE_STRXFRM_L 1
 
@@ -1462,16 +1455,8 @@ namespace __gnu_cxx
 /* Define to 1 if the target supports thread-local storage. */
 /* #undef _GLIBCXX_HAVE_TLS */
 
-/* Define to 1 if your `struct tm' has `tm_zone'. Deprecated, use
-   `_GLIBCXX_HAVE_STRUCT_TM_TM_ZONE' instead. */
-#define _GLIBCXX_HAVE_TM_ZONE 1
-
 /* Define if truncate is available in <unistd.h>. */
 #define _GLIBCXX_HAVE_TRUNCATE 1
-
-/* Define to 1 if you don't have `tm_zone' but do have the external array
-   `tzname'. */
-/* #undef _GLIBCXX_HAVE_TZNAME */
 
 /* Define to 1 if you have the <uchar.h> header file. */
 #define _GLIBCXX_HAVE_UCHAR_H 1
@@ -1560,9 +1545,6 @@ namespace __gnu_cxx
 
 /* Define to 1 if you have the ANSI C header files. */
 #define _GLIBCXX_STDC_HEADERS 1
-
-/* Define to 1 if your <sys/time.h> declares `struct tm'. */
-/* #undef TM_IN_SYS_TIME */
 
 /* Version number of package */
 /* #undef _GLIBCXX_VERSION */
@@ -1859,6 +1841,9 @@ namespace __gnu_cxx
 
 /* Define to restrict std::__basic_file<> to stdio APIs. */
 /* #undef _GLIBCXX_USE_STDIO_PURE */
+
+/* Define if struct tm has a tm_zone member. */
+#define _GLIBCXX_USE_STRUCT_TM_TM_ZONE 1
 
 /* Define if struct stat has timespec members. */
 #define _GLIBCXX_USE_ST_MTIM 1
