@@ -46,7 +46,7 @@
 
 // The datestamp of the C++ library in compressed ISO date format.
 #undef __GLIBCXX__ /* The testsuite defines it to 99999999 to block PCH.  */
-#define __GLIBCXX__ 20250506
+#define __GLIBCXX__ 20250507
 
 // Macros for various attributes.
 //   _GLIBCXX_PURE
@@ -1599,8 +1599,8 @@ namespace __gnu_cxx
    <cwchar> in namespace std for C++98. */
 #define _GLIBCXX98_USE_C99_WCHAR 1
 
-/* Define if the compiler supports C++11 atomics. */
-#define _GLIBCXX_ATOMIC_BUILTINS 1
+/* Define if the compiler supports native atomics for _Atomic_word. */
+#define _GLIBCXX_ATOMIC_WORD_BUILTINS 1
 
 /* Define if global objects can be aligned to
    std::hardware_destructive_interference_size. */
