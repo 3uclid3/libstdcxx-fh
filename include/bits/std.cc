@@ -1833,7 +1833,14 @@ export namespace std
   }
 }
 
-// FIXME <mdspan>
+// <mdspan>
+#if __glibcxx_mdspan
+export namespace std
+{
+  using std::extents;
+  // FIXME layout_*, default_accessor and mdspan
+}
+#endif
 
 // 20.2 <memory>
 export namespace std
@@ -3107,6 +3114,7 @@ export namespace std
 #if __cpp_lib_is_layout_compatible
   using std::is_corresponding_member;
   using std::is_layout_compatible;
+  using std::is_layout_compatible_v;
 #endif
 #if __cpp_lib_is_pointer_interconvertible
   using std::is_pointer_interconvertible_base_of;
