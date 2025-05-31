@@ -46,7 +46,7 @@
 
 // The datestamp of the C++ library in compressed ISO date format.
 #undef __GLIBCXX__ /* The testsuite defines it to 99999999 to block PCH.  */
-#define __GLIBCXX__ 20250530
+#define __GLIBCXX__ 20250531
 
 // Macros for various attributes.
 //   _GLIBCXX_PURE
@@ -1269,10 +1269,6 @@ namespace __gnu_cxx
 
 /* Define to 1 if you have the `posix_memalign' function. */
 #define _GLIBCXX_HAVE_POSIX_MEMALIGN 1
-
-/* Define to 1 if POSIX Semaphores with sem_timedwait are available in
-   <semaphore.h>. */
-/* #undef _GLIBCXX_HAVE_POSIX_SEMAPHORE */
 
 /* Define to 1 if you have the `powf' function. */
 #define _GLIBCXX_HAVE_POWF 1
