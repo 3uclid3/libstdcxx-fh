@@ -46,7 +46,7 @@
 
 // The datestamp of the C++ library in compressed ISO date format.
 #undef __GLIBCXX__ /* The testsuite defines it to 99999999 to block PCH.  */
-#define __GLIBCXX__ 20250604
+#define __GLIBCXX__ 20250605
 
 // Macros for various attributes.
 //   _GLIBCXX_PURE
@@ -271,6 +271,12 @@
 #else
 #define _GLIBCXX_NOEXCEPT_PARM
 #define _GLIBCXX_NOEXCEPT_QUAL
+#endif
+
+#if __cpp_auto_cast
+# define _GLIBCXX_AUTO_CAST(X) auto(X)
+#else
+# define _GLIBCXX_AUTO_CAST(X) ::std::__decay_t<decltype((X))>(X)
 #endif
 
 // Macro for extern template, ie controlling template linkage via use
