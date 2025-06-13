@@ -1840,7 +1840,10 @@ export namespace std
 export namespace std
 {
   using std::extents;
-  // FIXME layout_*, default_accessor and mdspan
+  using std::layout_left;
+  using std::layout_right;
+  using std::layout_stride;
+  // FIXME layout_left_padded, layout_right_padded, default_accessor and mdspan
 }
 #endif
 
