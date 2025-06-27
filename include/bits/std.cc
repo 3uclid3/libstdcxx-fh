@@ -888,6 +888,10 @@ export namespace std
   using std::partial_order;
   using std::strong_order;
   using std::weak_order;
+#if __glibcxx_type_order >= 202506L
+  using std::type_order;
+  using std::type_order_v;
+#endif
 }
 
 // 28.4 <complex>
@@ -1050,6 +1054,9 @@ export namespace std
   using std::throw_with_nested;
   using std::uncaught_exception;
   using std::uncaught_exceptions;
+#if __cpp_lib_exception_ptr_cast >= 202506L
+  using std::exception_ptr_cast;
+#endif
 }
 
 // 34.4 <execution>
