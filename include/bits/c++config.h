@@ -46,7 +46,7 @@
 
 // The datestamp of the C++ library in compressed ISO date format.
 #undef __GLIBCXX__ /* The testsuite defines it to 99999999 to block PCH.  */
-#define __GLIBCXX__ 20250828
+#define __GLIBCXX__ 20250829
 
 // Macros for various attributes.
 //   _GLIBCXX_PURE
@@ -1032,6 +1032,9 @@ namespace __gnu_cxx
 /* Define to 1 if you have the `cosl' function. */
 #define _GLIBCXX_HAVE_COSL 1
 
+/* Define to 1 if you have the <debugapi.h> header file. */
+/* #undef _GLIBCXX_HAVE_DEBUGAPI_H */
+
 /* Define to 1 if you have the declaration of `strnlen', and to 0 if you
    don't. */
 #define _GLIBCXX_HAVE_DECL_STRNLEN 1
@@ -1396,6 +1399,9 @@ namespace __gnu_cxx
 
 /* Define to 1 if you have the <sys/param.h> header file. */
 #define _GLIBCXX_HAVE_SYS_PARAM_H 1
+
+/* Define to 1 if you have the <sys/ptrace.h> header file. */
+#define _GLIBCXX_HAVE_SYS_PTRACE_H 1
 
 /* Define to 1 if you have the <sys/resource.h> header file. */
 #define _GLIBCXX_HAVE_SYS_RESOURCE_H 1
@@ -1806,6 +1812,9 @@ namespace __gnu_cxx
 /* Define if nl_langinfo_l should be used for std::text_encoding. */
 #define _GLIBCXX_USE_NL_LANGINFO_L 1
 
+/* Define if /proc/self/status should be used for <debugging>. */
+#define _GLIBCXX_USE_PROC_SELF_STATUS 1
+
 /* Define if pthreads_num_processors_np is available in <pthread.h>. */
 /* #undef _GLIBCXX_USE_PTHREADS_NUM_PROCESSORS_NP */
 
@@ -1821,6 +1830,9 @@ namespace __gnu_cxx
 
 /* Define if POSIX read/write locks are available in <gthr.h>. */
 /* #undef _GLIBCXX_USE_PTHREAD_RWLOCK_T */
+
+/* Define if ptrace should be used for std::is_debugger_present. */
+/* #undef _GLIBCXX_USE_PTRACE */
 
 /* Define if /dev/random and /dev/urandom are available for the random_device
    of TR1 (Chapter 5.1). */
